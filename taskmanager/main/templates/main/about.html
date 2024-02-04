@@ -1,0 +1,22 @@
+{% extends 'main/models/aboutbase.html'%}
+
+{% block title %}
+IOP
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <div class="container">
+        <h1> Шифратор конфиденциальных документов для безопасной передачи.</h1>
+    <p><strong>Как это работает?</strong></p>
+     <p><strong>Алгоритм шифрует данные полученные из документа</strong>в выбранную заранее картинку, которая в дальнейшем может быть отправлена адресату, у когторо тоже есть доступ
+        к нашему сервису, для разширофки своего документа.</p>
+        <code>архитектура</code>.
+        <div class="text-center">
+            <h3 >Архитектура проекта:</h3>
+        <img class="rounded" src="{%  static 'main/images/1architecture.png' %}" width="600" height="300" alt="ERROR">
+        </div>
+</div>
+{% endblock %}
+

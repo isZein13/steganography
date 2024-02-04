@@ -1,0 +1,36 @@
+{% extends 'main/models/profbase.html'%}
+
+{% block title %}
+{{ request.user.first_name }} profile
+{% endblock %}
+
+{% block content %}
+{% load static %}
+      {% if request.user.is_authenticated %}
+<div class="container">
+  <div class="row border border-primary">
+      <div class="col-sm-4 border border-primary">
+          <h3 class="alert-primary">Личные данные:</h3>
+        <h2 class="display-7 text-white">
+            Имя: {{ request.user.first_name }}  <br>
+          Фамилия: {{ request.user.last_name }} <br>
+          Логин: {{ request.user.username }}
+      </h2>
+      </div>
+      <div class="col-sm-4 border border-primary">
+          <h3 class="alert-primary">Скачать файл:</h3>
+      <!-- Тут можно в слово IOP вшить ссылку на страницу показателей результатов возможного IOP в процентах -->
+      <p class="text-white">Здесь вы сможете скачать ранее зашифрованный вами файл.</p>
+      <!-- При нажатии на кнопку будет выхоидить зеленое сообщение при условии если IOP не найдет, то есть остальное будет уже не доступно! -->
+             <a class="btn btn-outline-warning" href="{% url 'iope' %}">Скачать сейчас</a>
+      </div>
+      <div class="col-sm-4 border border-primary">
+           <h3 class="alert-primary">Расшифровка:</h3>
+      <!-- Условия проверки был ли пройден тест с отрицательным показателем. Только в таком случае показывается кнопка-->
+      <p class="display-8 text-white">Данная функция поможет вам прочитать скрытое сообщение.</p>
+      <a class="btn btn-outline-warning" href="{% url 'iopd' %}">Расшифровать</a>
+      </div>
+  </div>
+</div>
+ {% endif %}
+{% endblock %}

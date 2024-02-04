@@ -1,0 +1,24 @@
+{% extends 'main/models/base.html'%}
+
+{% block title %}
+ENCRYDEC
+{% endblock %}
+
+{% block content %}
+
+
+       {% if tasks %}
+            {% for e in tasks %}
+                  <div class="alert alert-primary mt-2 ">
+                   <h3>{{ e.title }}</h3>
+                   <p>{{ e.task }}</p>
+                  </div>
+            {% endfor %}
+       {% else %}
+        <div class="alert alert-warning ">
+         <h1>You still don't have any tasks!</h1>
+        </div>
+       {% endif %}
+
+{% endblock %}
+

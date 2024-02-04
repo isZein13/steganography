@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-image: url('{% static 'main/images/bg2.jpg' %}');background-attachment: fixed, scroll; background-position:center; background-size: cover;">
+        {% include './navbar.html' %}
+<div class="jumbotron bg-transparent ">
+    <div class="container text-light ">
+           <h1 class="display-4 "><h1>Исчерпывающее описание.</h1>
+           <p>Данная инновационная разработка способствует возможности безопасной передачи данных через общедоступные каналы, исключая заботу о возможных утечках.</p>
+           <p>Все передаваемые информационные элементы обеспечиваются уровнем защиты, обеспечиваемым методами стеганографии, что минимизирует риск как случайных, так и умышленных утечек информации из системы.</p></p>
+    </div>
+    </div>
+  </div>
+    <div class="container text-light">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+     <br>
+    {% include './footer.html' %}
+</html>

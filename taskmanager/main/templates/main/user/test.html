@@ -1,0 +1,26 @@
+{% extends 'main/models/testbase.html'%}
+
+{% block title %}
+Process page
+{% endblock %}
+
+{% block content %}
+{% load static %}
+      {% if request.user.is_authenticated %}
+        <div class="container text-white">
+            {% if photo %}
+            <div class="row border border-success">
+                <div class="col border border-success">
+                    <h3 class="display-4">Вот и ваша картинка</h3>:
+                <h3 class="alert alert-success">Успешно загружено!</h3>
+                <img src="{{photo.image.url}}" alt="connect" style="max-height: 300px">
+                <img src="{{result_path}}" alt="connect" style="max-height: 300px">
+                {% endif %}
+                </div>
+
+
+        </div>
+        </div>
+
+        {% endif %}
+{% endblock %}

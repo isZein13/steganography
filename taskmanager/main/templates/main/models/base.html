@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/styles.css'%}">
+</head>
+
+<body style="background-image: url('{% static 'main/images/bag.jpg' %}');background-attachment: fixed, scroll; background-position:center; background-size: cover">
+      {% include './navbar.html' %}
+      {% if request.user.is_authenticated %}
+
+          <div class="cloud">
+    <div class="cloudcontent">
+<div class="jumbotron bg-transparent ">
+    <div class="container ">
+        <h1 class="display-4 text-white">Добро пожаловать! Уважаемый пользователь <strong class="text-white">{{ request.user.first_name }}!</strong></h1>
+      <p class="alert alert-info">Попробуйте нашу услугу для шифрования конфиденциальных данных.</p>
+      <p><a class="btn btn-outline-info btn-lg" href="{% url 'about' %}" role="button">Перейти »</a></p>
+    </div>
+  </div>
+    <img src="{% static 'main/images/cloud-01.png'%}" alt="" class="cloud1">
+    <img src="{% static 'main/images/cloud-02.png'%}" alt="" class="cloud2">
+    <img src="{% static 'main/images/cloud-03.png'%}" alt="" class="cloud3">
+    <img src="{% static 'main/images/cloud-04.png'%}" alt="" class="cloud4">
+    </div>
+     </div>
+      {% else %}
+
+          <div class="cloud">
+    <div class="cloudcontent">
+        <div class="jumbotron bg-transparent">
+    <div class="container text-white">
+      <h1 class="display-4">Добро пожаловать!</h1>
+      <p class="alert alert-info">Ознакомьтесь поближе с нашей системой и зарегистрируйтесь</p>
+      <p><a class="btn btn-outline-info btn-lg" href="{% url 'about' %}" role="button">Learn more »</a></p>
+    </div>
+    </div>
+    <img src="{% static 'main/images/cloud-01.png'%}" alt="" class="cloud1">
+    <img src="{% static 'main/images/cloud-02.png'%}" alt="" class="cloud2">
+    <img src="{% static 'main/images/cloud-03.png'%}" alt="" class="cloud3">
+    <img src="{% static 'main/images/cloud-04.png'%}" alt="" class="cloud4">
+    </div>
+    </div>
+
+      {% endif %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+     <br>
+     {% include './footer.html' %}
+</html>

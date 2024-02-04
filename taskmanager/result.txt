@@ -1,0 +1,5 @@
+IOP is Perhaps!
+Felzenszwalb segments number: 199
+SLIC segments number: 233
+Quickshift segments numbe: 524
+slicMask segments numbe: 96

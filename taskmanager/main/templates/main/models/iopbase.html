@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-image: url('{% static 'main/images/pbg.jpg' %}');background-attachment: fixed, scroll; background-position:center; background-size: cover;">
+    {% if request.user.is_authenticated %}
+      {% include './usernav.html' %}
+<div class="jumbotron bg-transparent">
+    <div class="container text-white">
+        <h1 class="display-4">Now you can get/read results, dear {{ request.user.first_name }}! </h1>
+        <h3 class="display-6">Thank you so much for being with us!</h3>
+    </div>
+  </div>
+      {% else %}
+      <div class="alert alert-danger jumbotron">
+           <h1 class="display-5">EROR! You're not authorized!</h1>
+          <h3 class="display-4">Login or register please!</h3>
+          <div class="row border border-danger text-center">
+                <div class="col border border-success ">
+                    <a class="btn btn-primary" href="{% url 'login' %}">Log in</a>
+                </div>
+                     <div class="col border border-success">
+                      <a class="btn btn-success" href="{% url 'signup' %}">Sign up</a>
+                     </div>
+        </div>
+      </div>
+
+      {% endif %}
+    {% if request.user.is_authenticated %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+{% endif %}
+</body>
+     <br>
+{% if request.user.is_authenticated %}
+     {% include './footer.html' %}
+ {% endif %}
+</html>

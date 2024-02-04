@@ -1,0 +1,42 @@
+{% extends 'main/models/iopbase.html'%}
+
+{% block title %}
+{{ request.user.first_name }}'s Decryption results
+{% endblock %}
+
+{% block content %}
+{% load static %}
+      {% if request.user.is_authenticated %}
+      
+
+<div class="container text-white">
+        <div class="row border border-primary">
+      <div class="col-sm-4 border border-primary text-center">
+        
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5>Нажмите кнопку чтобы получить ваш результат</h5>
+            <input type="file" name="image" >
+            <button class="btn btn-success" type="submit"> Расшифровка </button>
+            
+        </form>
+        </div>
+            <div class="col-sm-4 border border-primary">
+                <h5>Картинка:</h5>
+
+                {% if photo_url %}
+                <img class="img-fluid" style="max-width: 300px;" alt="ImageName" src="{{photo_url}}">
+                {% endif %}
+
+            </div>
+            <div class="col-sm-4 border border-primary">
+                <h5>Результаты:</h5>
+
+                {% if result %}
+                <p>{{ result }}</p>
+                {% endif %}
+            </div>
+        </div>
+         </div>
+ {% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'main/models/iopbase.html'%}
+
+{% block title %}
+{{ request.user.first_name }}'s Encryption results
+{% endblock %}
+
+{% block content %}
+{% load static %}
+      {% if request.user.is_authenticated %}
+    <div class="container text-white text-center">
+        <div class="row border border-primary">
+      <div class="col-sm-4 border border-primary">
+        {% if photo %}
+        <h5>Нажмите на кнопку чтобы скачать вашу зашифрованную картинку</h5>
+        <a download="encrypted.png" href="{{photo.image.url}}" title="ImageName">
+          <button class="btn btn-success"> Скачать </button>
+        </a>
+        
+        <a href="/account/iopD">
+          <button class="btn btn-success">Расшифровать</button>
+        </a>
+        {% else %}
+        <h5>Вы еще не зашифровывали ни одного файла!</h5>
+        {% endif %}
+      </div>
+      <div class="col-sm-8 border border-primary">
+        {% if photo %}
+          <img class="img-fluid" style="max-width: 300px;" alt="ImageName" src="{{photo.image.url}}">
+
+        {% else %}
+        <h5>Вы еще не зашифровывали ни одного файла!</h5>
+        {% endif %}
+      </div>
+    </div>
+         </div>
+ {% endif %}
+{% endblock %}
